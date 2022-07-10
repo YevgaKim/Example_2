@@ -89,38 +89,12 @@ ARIAL_80=pygame.font.SysFont("arial",80)
 
     
 def reboot_keyboard():
-    q_b.counter=0
-    w_b.counter=0
-    e_b.counter=0
-    r_b.counter=0
-    t_b.counter=0
-    y_b.counter=0
-    u_b.counter=0
-    i_b.counter=0
-    o_b.counter=0
-    p_b.counter=0
-    p1_b.counter=0
-    p2_b.counter=0
-    a_b.counter=0
-    s_b.counter=0
-    d_b.counter=0
-    f_b.counter=0
-    g_b.counter=0
-    h_b.counter=0
-    j_b.counter=0
-    k_b.counter=0
-    l_b.counter=0
-    l1_b.counter=0
-    l2_b.counter=0
-    z_b.counter=0
-    x_b.counter=0
-    c_b.counter=0
-    v_b.counter=0
-    b_b.counter=0
-    n_b.counter=0
-    m_b.counter=0
-    m1_b.counter=0
-    m2_b.counter=0
+    keyboard = [q_b,w_b,e_b,r_b,t_b,y_b,u_b,i_b,o_b,p_b,p1_b,p2_b,
+                a_b,s_b,d_b,f_b,g_b,h_b,j_b,k_b,l_b,l1_b,l2_b,
+                z_b,x_b,c_b,v_b,b_b,n_b,m_b,m1_b,m2_b
+                ]
+    for i in keyboard:
+        i.counter=0
     
 def buttons_letter(player,points):
     while True:
@@ -195,6 +169,7 @@ def buttons_letter(player,points):
             return "б"
         if m2_b.draw_b(464,h_3,"ю"):
             return "ю" 
+            
         #button hint menu
         if hint_b.draw_circle(570,25,25,hint_menu,player,points):
             return player.hint_letter
