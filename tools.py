@@ -12,15 +12,12 @@ class Element:
         self.rect.centerx=self.screen_rect.centerx
         self.rect.bottom=self.screen_rect.bottom
 
-    def output(self):
-        self.rect.centerx=self.screen_rect.centerx-80
-        self.rect.bottom=self.screen_rect.bottom-120
-        self.screen.blit(self.image,self.rect)
-    
-    def output_b(self,x,y):
+    def output(self,x,y):
         self.rect.centerx=self.screen_rect.centerx-x
         self.rect.bottom=self.screen_rect.bottom-y
         self.screen.blit(self.image,self.rect)
+    
+    
 
 
 class Button:
@@ -74,7 +71,7 @@ class Button:
             pygame.draw.rect(self.screen, (255,255,255), (x+2, y+2, self.width-4, self.height-4))
         print_text(color)
 
-    def draw_circle(self,x,y,radius,action=None,player=None,points=0):
+    def draw_circle(self,x,y,radius,action=None,player=None,points=0,go=None):
         mouse=pygame.mouse.get_pos()
         click=pygame.mouse.get_pressed()
 
@@ -82,8 +79,11 @@ class Button:
             pygame.draw.circle(self.screen, (255,0,255), (x, y), radius)
             if click[0]==1 and action is not None:
                 pygame.time.delay(200)
-                if action(player,points):
-                    return True
+                if player!=None:
+                    if action(player,points):
+                        return True
+                action(go)
+                
         else:
             pygame.draw.circle(self.screen, (255,255,255), (x, y), radius)
         
